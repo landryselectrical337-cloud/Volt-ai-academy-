@@ -1,0 +1,6 @@
+{
+  "name": "VoltPro AI - Electrician Academy & Business Engine",
+  "description": "Interactive electrician training app with NEC code mastery, AI sales roleplay, interactive circuit panel simulator, video slide presenter, and Volt Books AI live accountant for contractors.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

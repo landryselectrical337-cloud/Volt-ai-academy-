@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">VoltPro Academy</string>
+    <string name="title_activity_main">VoltPro Academy</string>
+    <string name="package_name">com.voltpro.academy</string>
+    <string name="custom_url_scheme">com.voltpro.academy</string>
+</resources>
