@@ -29,6 +29,7 @@ export const VoltBooksAccountant: React.FC = () => {
   const [quoteJobScope, setQuoteJobScope] = useState("100A to 200A Main Panel Upgrade with Whole-Home Surge Protector");
   const [quoteLaborHours, setQuoteLaborHours] = useState(12);
   const [quoteMaterialsCost, setQuoteMaterialsCost] = useState(1400);
+  const [quoteFundsReceived, setQuoteFundsReceived] = useState(0);
 
   // AI Accountant State
   const [accountantQuery, setAccountantQuery] = useState("");
@@ -47,6 +48,7 @@ export const VoltBooksAccountant: React.FC = () => {
   const estimatedLaborCost = quoteLaborHours * targetBillablePricePerHour;
   const materialsWithMarkup = quoteMaterialsCost * 1.3; // 30% materials markup
   const totalQuotePrice = estimatedLaborCost + materialsWithMarkup;
+  const fundsReceivable = Math.max(totalQuotePrice - quoteFundsReceived, 0);
 
   const handleQueryAccountant = async (customQ?: string) => {
     const q = customQ || accountantQuery;
@@ -214,6 +216,17 @@ export const VoltBooksAccountant: React.FC = () => {
                 />
               </div>
 
+              <div>
+                <label className="block text-slate-400 mb-1">Funds Received ($)</label>
+                <input
+                  type="number"
+                  min={0}
+                  value={quoteFundsReceived}
+                  onChange={(e) => setQuoteFundsReceived(Math.max(0, Number(e.target.value)))}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white"
+                />
+              </div>
+
               <div className="col-span-2">
                 <label className="block text-slate-400 mb-1">Scope of Electrical Work</label>
                 <input
@@ -238,6 +251,10 @@ export const VoltBooksAccountant: React.FC = () => {
               <div className="flex justify-between items-center pt-1">
                 <span className="font-bold text-white text-sm">TOTAL ESTIMATE PRICE:</span>
                 <span className="text-2xl font-black text-amber-400">${totalQuotePrice.toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between items-center border-t border-slate-800 pt-2">
+                <span className="font-bold text-slate-200 text-sm">FUNDS RECEIVABLE BALANCE:</span>
+                <span className="text-xl font-black text-emerald-400">${fundsReceivable.toFixed(2)}</span>
               </div>
 
               {/* Legal Disclaimer Box */}
