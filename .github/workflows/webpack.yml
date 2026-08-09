@@ -25,6 +25,6 @@ jobs:
     - name: Build
       run: |
         npm install
-        node --input-type=module -e "import fs from 'node:fs'; import dotenv from 'dotenv'; const parsed = dotenv.parse(fs.readFileSync('.env.example')); for (const key of ['GEMINI_API_KEY', 'APP_URL']) { if (!parsed[key]) throw new Error(`${key} is missing from .env.example`); } new URL(parsed.APP_URL);"
+        node --input-type=module -e 'import fs from "node:fs"; import dotenv from "dotenv"; const parsed = dotenv.parse(fs.readFileSync(".env.example")); for (const key of ["GEMINI_API_KEY", "APP_URL"]) { if (!parsed[key]) throw new Error(key + " is missing from .env.example"); } new URL(parsed.APP_URL);'
         npm run lint
         npm run build
